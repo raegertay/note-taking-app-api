@@ -13,4 +13,11 @@ class ApiNotesController < ApplicationController
     render status: 200, json: @notes
   end
 
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    @notes = Project.find_by(name: params[:name]).notes.select(:id, :title, :body)
+    render status: 200, json: @notes
+  end
+
 end

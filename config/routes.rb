@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  scope '/api' do
-    get '/user/:name', to: 'api_notes#index'
-    post '/user/:name', to: 'api_notes#create'
+  scope '/api/project' do
+    get '/:name', to: 'api_notes#index'
+    post '/:name', to: 'api_notes#create'
+    delete '/:name/note/:id', to: 'api_notes#destroy'
   end
 
 end
