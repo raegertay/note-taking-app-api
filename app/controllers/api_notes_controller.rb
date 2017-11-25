@@ -20,4 +20,11 @@ class ApiNotesController < ApplicationController
     render status: 200, json: @notes
   end
 
+  def update
+    @note = Note.find(params[:id])
+    @note.update(title: params[:title], body: params[:body])
+    @notes = Project.find_by(name: params[:name]).notes.select(:id, :title, :body)
+    render status: 200, json: @notes
+  end
+
 end
